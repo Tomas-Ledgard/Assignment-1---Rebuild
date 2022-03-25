@@ -38,7 +38,7 @@ namespace CMP1903M_Assessment_1_Base_Code
             // Setting the folder path for text files to be stored.
 
             string folder = Environment.CurrentDirectory;
-            var filepath = System.IO.Directory.GetParent(folder).Parent.Parent.Parent.Parent + "\\TxtFiles";
+            var filepath = System.IO.Directory.GetParent(folder).Parent.Parent.Parent + "\\TxtFiles";
 
             Console.WriteLine("\nYou must place your text file(s) in the following location: \n" + filepath + "\n");
 
@@ -58,6 +58,8 @@ namespace CMP1903M_Assessment_1_Base_Code
 
 
                 var Input = new Input();
+                
+                // Option 1 - Manual Text Input
 
                 if (option == "1")
                 {
@@ -65,6 +67,9 @@ namespace CMP1903M_Assessment_1_Base_Code
                     Text = Input.manualTextInput();
 
                 }
+
+                // Option 2 - Read from file
+
                 else if (option == "2")
                 {
                     Console.ForegroundColor = ConsoleColor.White;
@@ -75,6 +80,9 @@ namespace CMP1903M_Assessment_1_Base_Code
                     Text = Input.fileTextInput(filename, filepath);
 
                 }
+
+                // If option invalid
+
                 else
                 {
                     Console.Clear();
@@ -84,25 +92,38 @@ namespace CMP1903M_Assessment_1_Base_Code
                     option = "Invalid";
                 }
 
+                // If option is valid
+
                 if (option != "Invalid")
                 {
 
                     //Create an 'Analyse' object
-                    //Pass the text input to the 'analyseText' method
 
                     var Analyse = new Analyse();
 
-                    var Analysed = Analyse.analyseText(Text);
+                    //Pass the text input to the 'analyseText' method
+
+                    List<int> Analysed = Analyse.analyseText(Text);
 
                     //Receive a list of integers back
 
-                    var Report = new Report();
-
-                    var Reported = Report.OuputToConsole(Analysed);
-
                     //Report the results of the analysis
 
+                    var Report = new Report();
 
+                    string Reported = Report.OuputToConsole(Analysed);
+
+                    if (option == "2") {
+
+                        var Long = new LongWords();
+
+                        string GetLong = Long.GetLongWords(Text);
+
+                    }
+
+                    
+
+                    
                     //TO ADD: Get the frequency of individual letters?                                                
                 }
             }

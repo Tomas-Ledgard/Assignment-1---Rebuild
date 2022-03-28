@@ -15,6 +15,8 @@ namespace CMP1903M_Assessment_1_Base_Code
         public string OuputToConsole(List<int> Values)
         {
 
+            // Try to set a string of all of the different values, consonants vowels etc and return them
+
             try
             {
                 string test = ("Sentences = " + Values[0] + "\nVowels = " + Values[1] + "\nConsonants = " + Values[2] + "\nUppercase = " + Values[3] + "\nLowercase = " + Values[4] + "\nTotal Characters = " + Values[5]);
@@ -22,6 +24,9 @@ namespace CMP1903M_Assessment_1_Base_Code
                 Console.WriteLine(test);
                 return test;
             }
+
+            // If failed, this means it is an invalid file path
+
             catch (Exception)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
